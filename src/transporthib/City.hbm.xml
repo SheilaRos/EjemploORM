@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-ene-2017 17:48:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="transporthib.City" table="city" catalog="transport" optimistic-lock="version">
+        <id name="postalcode" type="string">
+            <column name="postalcode" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <set name="packages" table="package" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="city" length="5" not-null="true" />
+            </key>
+            <one-to-many class="transporthib.Package" />
+        </set>
+    </class>
+</hibernate-mapping>

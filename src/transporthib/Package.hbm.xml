@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-ene-2017 17:48:26 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="transporthib.Package" table="package" catalog="transport" optimistic-lock="version">
+        <id name="idpackage" type="java.lang.Integer">
+            <column name="idpackage" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="city" class="transporthib.City" fetch="select">
+            <column name="city" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="truckdriver" class="transporthib.Truckdriver" fetch="select">
+            <column name="driver" length="9" not-null="true" />
+        </many-to-one>
+        <property name="customer" type="string">
+            <column name="customer" length="60" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
